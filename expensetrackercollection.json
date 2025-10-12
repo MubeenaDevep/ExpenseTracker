@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "7d89abbb-19b9-478d-9c7c-da128504d1a6",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25965983",
+		"_collection_link": "https://www.postman.com/ccoders-0050/workspace/expense-tracker/collection/25965983-7d89abbb-19b9-478d-9c7c-da128504d1a6?action=share&source=collection_link&creator=25965983"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"john123\",\r\n  \"email\": \"johnny@example.com\",\r\n  \"password\": \"Test@1234\",\r\n  \"password2\": \"Test@1234\",\r\n  \"first_name\": \"John\",\r\n  \"last_name\": \"Doe\",\r\n  \"gender\": \"male\",\r\n  \"phone_no\": \"1234567890\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"john123\",\r\n  \"password\": \"Test@1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CURRENT-USER-DETAILS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:authorization-secret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/me/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-income/source",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:authorization-secret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Incentives\",\r\n  \"amount\": 500,\r\n  \"desc\": \"Monthly salary\",\r\n  \"source_names\": [\"Company XYZ\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/incomes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"incomes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-incomes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:authorization-secret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/incomes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"incomes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-incomes-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:authorization-secret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/incomes/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"incomes",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-incomes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTEzMTg1LCJpYXQiOjE3NDk5MTEzODUsImp0aSI6IjI2NDgxMWRiN2Y2YjQyMTNiOGE1MDZkZTg4M2E3NjkzIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.am57a2ttBnFSHnnpm-haZXhmiOiOWCLMxtL7XUFnAl4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"title\":\"Active Income\",\r\n  \"amount\": 30000,\r\n  \"source_names\": [\"salary\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/incomes/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"incomes",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "del-income-by-id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/incomes/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"incomes",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "budgets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIxNDQ2LCJpYXQiOjE3NDk5MTk2NDYsImp0aSI6ImI4NmNmNWM1MWUzMTQ5MGM4MDMwNzgzMmFiMTI5YzRkIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.iPm9uvVOJW-Yn_xXnUCwAzUOM7_xqLjK4WcpsL7dZLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"June Budget\",\r\n  \"desc\": \"For June Month\",\r\n  \"_from\": \"2025-06-21T00:00:00Z\",\r\n  \"to\": \"2025-06-30T23:59:59Z\",\r\n  \"total_amount\": 5000\r\n}\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/budgets/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"budgets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "budgets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIxNDQ2LCJpYXQiOjE3NDk5MTk2NDYsImp0aSI6ImI4NmNmNWM1MWUzMTQ5MGM4MDMwNzgzMmFiMTI5YzRkIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.iPm9uvVOJW-Yn_xXnUCwAzUOM7_xqLjK4WcpsL7dZLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/budgets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"budgets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "budget-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIxNDQ2LCJpYXQiOjE3NDk5MTk2NDYsImp0aSI6ImI4NmNmNWM1MWUzMTQ5MGM4MDMwNzgzMmFiMTI5YzRkIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.iPm9uvVOJW-Yn_xXnUCwAzUOM7_xqLjK4WcpsL7dZLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/budgets/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"budgets",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-budgets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIxNDQ2LCJpYXQiOjE3NDk5MTk2NDYsImp0aSI6ImI4NmNmNWM1MWUzMTQ5MGM4MDMwNzgzMmFiMTI5YzRkIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.iPm9uvVOJW-Yn_xXnUCwAzUOM7_xqLjK4WcpsL7dZLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"june 21 to 30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/budgets/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"budgets",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "del-budgets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIxNDQ2LCJpYXQiOjE3NDk5MTk2NDYsImp0aSI6ImI4NmNmNWM1MWUzMTQ5MGM4MDMwNzgzMmFiMTI5YzRkIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.iPm9uvVOJW-Yn_xXnUCwAzUOM7_xqLjK4WcpsL7dZLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/budgets/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"budgets",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "expenses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIzMzkzLCJpYXQiOjE3NDk5MjE1OTMsImp0aSI6IjJmNjNlOTc2YzEzMDQzNTVhYjQzYzczNWVjYWY3ODZjIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.RgCr5o7r4nigORI8s9a-bYfj0TqH_9VKEzNLBNIG0JY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Dinner\",\r\n  \"desc\": \"Team dinner\",\r\n  \"amount\": 500,\r\n  \"budget\": 1,\r\n  \"category_names\": [\"Food\", \"Team\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/expenses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-expense-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIzMzkzLCJpYXQiOjE3NDk5MjE1OTMsImp0aSI6IjJmNjNlOTc2YzEzMDQzNTVhYjQzYzczNWVjYWY3ODZjIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.RgCr5o7r4nigORI8s9a-bYfj0TqH_9VKEzNLBNIG0JY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users/expenses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "expense-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTIzMzkzLCJpYXQiOjE3NDk5MjE1OTMsImp0aSI6IjJmNjNlOTc2YzEzMDQzNTVhYjQzYzczNWVjYWY3ODZjIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.RgCr5o7r4nigORI8s9a-bYfj0TqH_9VKEzNLBNIG0JY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":677\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/expenses/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"expenses",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5OTI3NTI5LCJpYXQiOjE3NDk5MjU3MjksImp0aSI6IjI2ODEzYmQyZDY3NDQyNGRhNmJmYmU3Zjk0OTcwNjJmIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJqb2huMTIzIiwiZW1haWwiOiJqb2hubnlAZXhhbXBsZS5jb20ifQ.p2icX83Cgy1rh5B2SJryu-Cipuv3J6blyZoXqiSlTR0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
