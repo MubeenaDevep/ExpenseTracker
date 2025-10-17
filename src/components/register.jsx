@@ -49,7 +49,6 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setTouched(true);
 
     const valid =
       firstName.trim() &&

@@ -110,25 +110,6 @@ function AddExpensePage() {
     }
   };
 
-  const getFilteredAndSortedExpenses = () => {
-    let result = [...expenses];
-    if (filterCategory) {
-      result = result.filter(
-        (e) =>
-          e.category === filterCategory ||
-          e.category_names?.includes(filterCategory)
-      );
-    }
-    if (sortType === "date") {
-      result.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (sortType === "amount") {
-      result.sort((a, b) => (b.amount || 0) - (a.amount || 0));
-    }
-    return result;
-  };
-
-  const filteredExpenses = getFilteredAndSortedExpenses();
-
   return (
     <div
       className="min-h-screen p-8 font-serif"
