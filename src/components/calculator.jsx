@@ -12,6 +12,7 @@ const Calculator = () => {
       setInput(input.slice(0, -1));
     } else if (value === '=') {
       try {
+        // eslint-disable-next-line no-new-func
            setResult(Function(`"use strict"; return (${input})`)().toString());
       } catch {
         setResult('Error');
