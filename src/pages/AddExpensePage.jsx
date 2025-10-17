@@ -229,11 +229,11 @@ function AddExpensePage() {
       {/* Expense List */}
       <div className="w-full">
         <h3 className="text-2xl font-semibold mb-4 text-[#5c4b3b]">Expenses</h3>
-        {filteredExpenses.length === 0 ? (
+        {expenses.length === 0 ? (
           <p className="text-[#5c4b3b]">No expenses to show.</p>
         ) : (
           <ul className="space-y-3">
-            {filteredExpenses.map((e, idx) => (
+            {expenses.map((e, idx) => (
               <li
                 key={e.id ?? `${e.title}-${idx}`}
                 className="p-3 border border-[#c9b79c] rounded-md bg-[#f9f3e7]"
