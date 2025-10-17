@@ -1,76 +1,3 @@
-// import React, { useState } from 'react';
-
-// const Calculator = () => {
-//   const [input, setInput] = useState('');
-//   const [result, setResult] = useState('');
-
-//   const handleClick = (value) => {
-//     if (value === 'C') {
-//       setInput('');
-//       setResult('');
-//     } else if (value === '⌫') {
-//       setInput(input.slice(0, -1));
-//     } else if (value === '=') {
-//       try {
-//         setResult(eval(input).toString()); // Caution: eval() is not safe for untrusted inputs
-//       } catch {
-//         setResult('Error');
-//       }
-//     } else {
-//       setInput(input + value);
-//     }
-//   };
-
-//   const buttons = [
-//     'C', '⌫', '/', '*',
-//     '7', '8', '9', '-',
-//     '4', '5', '6', '+',
-//     '1', '2', '3', '=',
-//     '0', '.', 
-//   ];
-
-//   return (
-//     <div className="flex justify-center items-start">
-//       <div className="bg-white p-6 rounded-2xl shadow-2xl w-80">
-//         <div className="mb-4">
-//           <div className="text-right text-xl font-mono break-words min-h-[48px]">{input || '0'}</div>
-//           <div className="text-right text-gray-500 text-sm">{result}</div>
-//         </div>
-//         <div className="grid grid-cols-4 gap-3">
-//           {buttons.map((btn, idx) => (
-//             <button
-//               key={idx}
-//               onClick={() => handleClick(btn)}
-//               className={`py-3 rounded-xl text-lg font-bold 
-//                 ${btn === '=' ? 'bg-blue-500 text-white' : 
-//                   btn === 'C' ? 'bg-red-500 text-white' : 
-//                   btn === '⌫' ? 'bg-yellow-400 text-white' : 
-//                   'bg-gray-200 text-black'}
-//                 hover:scale-105 transition`}
-//             >
-//               {btn}
-//             </button>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Calculator;
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 
 const Calculator = () => {
@@ -85,7 +12,7 @@ const Calculator = () => {
       setInput(input.slice(0, -1));
     } else if (value === '=') {
       try {
-        setResult(eval(input).toString()); // Caution: eval() is not safe for untrusted inputs
+           setResult(Function(`"use strict"; return (${input})`)().toString());
       } catch {
         setResult('Error');
       }
